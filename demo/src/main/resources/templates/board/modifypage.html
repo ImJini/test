@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 수정</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <h2>사용자 수정</h2>
+    <form th:object="${member}" method="post" action="/members/update">
+        <!-- Input fields for editing user information -->
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{name}" />
+        <input type="text" th:field="*{email}" />
+
+        <!-- Submit button to update user -->
+        <button type="submit">Update</button>
+    </form>
+</div>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

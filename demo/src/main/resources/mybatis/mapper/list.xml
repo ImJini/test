@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+    <select id="getMemberList" resultType="com.example.demo.domain.MemberVO">
+        select id, name, email from new_table
+    </select>
+
+    <insert id="registerMember" parameterType="com.example.demo.domain.MemberVO">
+        insert into new_table(name, email) values(#{name}, #{email})
+    </insert>
+
+    <resultMap id="memberResultMap" type="com.example.demo.domain.MemberVO">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+    </resultMap>
+
+    <select id="getMemberById" resultMap="memberResultMap">
+        SELECT * FROM new_table WHERE id = #{id}
+    </select>
+
+    <update id="updateMember" parameterType="com.example.demo.domain.MemberVO">
+        UPDATE new_table
+        SET name = #{name}, email = #{email}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from new_table
+        where id = #{id}
+    </delete>
+
+</mapper>
